@@ -5,7 +5,7 @@ export interface MenuItem {
   price: number;
   description: string;
   allergens: string[];
-  image: string; // Will hold relative paths like "images/burrata_iberica.jpg"
+  image: string; // Will hold relative paths like "images/burrata_iberica.webp"
   featured: boolean;
   blockMenu?: string;
   priceWithLeche?: number;
