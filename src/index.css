@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary: #EE2737;
+  --bg: #000000;
+  --card: #121212;
+  --text: #FFFFFF;
+}
+
+@theme {
+  --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", sans-serif;
+  --color-primary-red: #EE2737;
+  --color-dark-bg: #000000;
+  --color-card-bg: #121212;
+}
+
+body, html {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Custom scroll snap utility classes */
+.scroll-snap-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scrollbar-width: none; /* Firefox */
+}
+
+.scroll-snap-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.scroll-snap-item {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: 100vh;
+}
+
+/* Custom hide scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Elegant Dark design utility additions */
+.badge-elegant {
+  background-color: var(--primary);
+  color: white;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.price-tag-elegant {
+  font-size: 32px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.dot-elegant {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.dot-elegant.active {
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+  width: 16px;
+  border-radius: 4px;
+}
