@@ -33,6 +33,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [allergenFilters, setAllergenFilters] = useState<string[]>([]);
   const [likedItems, setLikedItems] = useState<Record<number, boolean>>({});
   const [copiedItemId, setCopiedItemId] = useState<number | null>(null);
@@ -139,6 +140,11 @@ export default function App() {
 
   const removeFromCart = (itemId: number) => {
     setCart((prevCart) => prevCart.filter((c) => c.item.id !== itemId));
+  };
+
+  const clearCart = () => {
+    setCart([]);
+    setIsCartOpen(false);
   };
 
   // Toggle Like for dishes
@@ -261,33 +267,33 @@ export default function App() {
       </div>
 
       {/* Main Header */}
-      <header className="sticky top-0 bg-[#000000]/95 backdrop-blur-md border-b border-[#222] px-4 py-3.5 z-30 shadow-lg">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+      <header className="sticky top-0 bg-[#000000]/95 backdrop-blur-md border-b border-[#222] px-3 py-3 sm:px-4 sm:py-3.5 z-30 shadow-lg">
+        <div className="max-w-6xl mx-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           
           {/* Logo Brand */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#EE2737] flex items-center justify-center font-display text-xl font-bold text-white border border-[#222] shadow-inner">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#EE2737] flex items-center justify-center font-display text-lg sm:text-xl font-bold text-white border border-[#222] shadow-inner shrink-0">
               AI
             </div>
-            <div>
-              <h1 className="font-display text-2xl font-bold tracking-tight text-white flex items-center gap-1.5 leading-none">
+            <div className="min-w-0">
+              <h1 className="font-display text-lg sm:text-2xl font-bold tracking-tight text-white flex flex-wrap items-center gap-1.5 leading-none">
                 ALMA IBÉRICA
-                <span className="text-[10px] bg-[#EE2737] text-white font-sans px-1.5 py-0.5 rounded font-bold uppercase tracking-wider scale-95 origin-left">
+                <span className="text-[9px] sm:text-[10px] bg-[#EE2737] text-white font-sans px-1.5 py-0.5 rounded font-bold uppercase tracking-wider scale-95 origin-left">
                   Sant Boi
                 </span>
               </h1>
-              <p className="text-[10px] text-neutral-400 font-sans tracking-wide mt-0.5 uppercase font-light">
+              <p className="text-[9px] sm:text-[10px] text-neutral-400 font-sans tracking-wide mt-0.5 uppercase font-light truncate">
                 Tapeo Selecto & Embutidos de Bellota
               </p>
             </div>
           </div>
 
           {/* Toggle Views Button */}
-          <div className="flex items-center gap-2">
-            <div className="bg-[#121212] border border-[#222] rounded-full p-1 flex">
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+            <div className="hidden sm:flex bg-[#121212] border border-[#222] rounded-full p-1">
               <button 
                 onClick={() => setViewMode("reels")}
-                className={`px-4 py-1.5 rounded-full font-display tracking-wider text-xs uppercase transition-all duration-300 flex items-center gap-1.5 ${
+                className={`px-3 sm:px-4 py-1.5 rounded-full font-display tracking-wider text-[10px] sm:text-xs uppercase transition-all duration-300 flex items-center justify-center gap-1.5 ${
                   viewMode === "reels" 
                     ? "bg-[#EE2737] text-white shadow-md font-bold" 
                     : "text-neutral-400 hover:text-white"
@@ -298,7 +304,7 @@ export default function App() {
               </button>
               <button 
                 onClick={() => setViewMode("carta")}
-                className={`px-4 py-1.5 rounded-full font-display tracking-wider text-xs uppercase transition-all duration-300 flex items-center gap-1.5 ${
+                className={`px-3 sm:px-4 py-1.5 rounded-full font-display tracking-wider text-[10px] sm:text-xs uppercase transition-all duration-300 flex items-center justify-center gap-1.5 ${
                   viewMode === "carta" 
                     ? "bg-[#EE2737] text-white shadow-md font-bold" 
                     : "text-neutral-400 hover:text-white"
@@ -309,13 +315,21 @@ export default function App() {
               </button>
             </div>
 
+            <button
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              className="sm:hidden p-2.5 rounded-full bg-[#121212] hover:bg-neutral-900 border border-[#222] text-white transition-all"
+              aria-label="Abrir menú"
+            >
+              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
+
             {/* Shopping Cart Trigger */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2.5 rounded-full bg-[#121212] hover:bg-neutral-900 border border-[#222] text-white transition-all group"
+              className="relative p-2.5 sm:p-2.5 rounded-full bg-[#121212] hover:bg-neutral-900 border border-[#222] text-white transition-all group shrink-0"
               id="btn-header-cart"
             >
-              <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
               {cartTotalItems > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 bg-[#EE2737] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse border border-black shadow-lg">
                   {cartTotalItems}
@@ -324,15 +338,51 @@ export default function App() {
             </button>
           </div>
 
+          {isMobileMenuOpen && (
+            <div className="sm:hidden border border-[#222] rounded-2xl bg-[#121212] p-2 flex flex-col gap-2">
+              <button
+                onClick={() => {
+                  setViewMode("reels");
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`w-full rounded-xl px-3 py-2 text-left text-sm font-display uppercase tracking-wider transition-all ${
+                  viewMode === "reels" ? "bg-[#EE2737] text-white" : "text-neutral-300 hover:bg-neutral-800"
+                }`}
+              >
+                🎬 Reels
+              </button>
+              <button
+                onClick={() => {
+                  setViewMode("carta");
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`w-full rounded-xl px-3 py-2 text-left text-sm font-display uppercase tracking-wider transition-all ${
+                  viewMode === "carta" ? "bg-[#EE2737] text-white" : "text-neutral-300 hover:bg-neutral-800"
+                }`}
+              >
+                📋 Carta
+              </button>
+              <button
+                onClick={() => {
+                  setIsCartOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full rounded-xl px-3 py-2 text-left text-sm font-display uppercase tracking-wider text-neutral-300 hover:bg-neutral-800 transition-all"
+              >
+                🛒 Ver pedido
+              </button>
+            </div>
+          )}
+
         </div>
       </header>
 
       {/* Categories Horizontal Selector */}
-      <nav className="bg-[#000000] border-b border-[#222] py-3.5 px-4 overflow-x-auto scrollbar-none z-10 sticky top-[65px]">
-        <div className="max-w-6xl mx-auto flex items-center gap-2 whitespace-nowrap">
+      <nav className="bg-[#000000] border-b border-[#222] py-3 px-3 sm:py-3.5 sm:px-4 overflow-x-auto scrollbar-none z-10 sticky top-[63px] sm:top-[65px]">
+        <div className="max-w-6xl mx-auto flex items-center gap-2 whitespace-nowrap pb-1">
           <button
             onClick={() => setSelectedCategory("Todos")}
-            className={`px-4 py-1.5 rounded-full font-display tracking-wider text-xs uppercase border transition-all duration-200 ${
+            className={`px-3.5 sm:px-4 py-1.5 rounded-full font-display tracking-wider text-[10px] sm:text-xs uppercase border transition-all duration-200 ${
               selectedCategory === "Todos"
                 ? "bg-white text-black border-white font-bold"
                 : "bg-[#121212] text-neutral-400 border-[#222] hover:border-[#EE2737] hover:text-white"
@@ -344,7 +394,7 @@ export default function App() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-1.5 rounded-full font-display tracking-wider text-xs uppercase border transition-all duration-200 ${
+              className={`px-3.5 sm:px-4 py-1.5 rounded-full font-display tracking-wider text-[10px] sm:text-xs uppercase border transition-all duration-200 ${
                 selectedCategory === cat
                   ? "bg-[#EE2737] text-white border-[#EE2737] font-bold shadow-md"
                   : "bg-[#121212] text-neutral-400 border-[#222] hover:border-[#EE2737] hover:text-white"
@@ -366,7 +416,7 @@ export default function App() {
 
         {/* 1. VIEW MODE: REELS (IMMERSIVE SWIPE SNAP) */}
         {viewMode === "reels" && (
-          <div className="relative bg-[#000000] flex-grow h-[calc(100vh-165px)] flex flex-col justify-center">
+          <div className="relative bg-[#000000] flex-grow h-[calc(100dvh-165px)] sm:h-[calc(100vh-165px)] flex flex-col justify-center">
             {reelsItems.length === 0 ? (
               <div className="flex flex-col items-center justify-center text-center p-8 max-w-md mx-auto">
                 <SlidersHorizontal className="w-12 h-12 text-[#EE2737] mb-4 animate-pulse" />
@@ -394,7 +444,7 @@ export default function App() {
                     <div 
                       key={item.id}
                       className="scroll-snap-item relative w-full h-full flex flex-col justify-between bg-black text-white overflow-hidden"
-                      style={{ height: "calc(100vh - 165px)" }}
+                      style={{ height: "calc(100dvh - 165px)" }}
                     >
                       {/* Media Display Area */}
                       <div className="absolute inset-0 w-full h-full z-0 bg-[#050505] flex items-center justify-center">
@@ -453,13 +503,13 @@ export default function App() {
                       </div>
 
                       {/* Right Action Widgets (Like, Share, Quick Add) */}
-                      <div className="absolute right-4 bottom-32 z-20 flex flex-col items-center gap-5">
+                      <div className="absolute right-3 sm:right-4 bottom-28 sm:bottom-32 z-20 flex flex-col items-center gap-3 sm:gap-5">
                         
                         {/* Like Button */}
                         <div className="flex flex-col items-center">
                           <button
                             onClick={() => toggleLike(item.id)}
-                            className={`p-3 rounded-full backdrop-blur-md border transition-all duration-300 shadow-lg ${
+                            className={`p-2.5 sm:p-3 rounded-full backdrop-blur-md border transition-all duration-300 shadow-lg ${
                               isLiked 
                                 ? "bg-[#EE2737] border-[#EE2737] text-white scale-110" 
                                 : "bg-[#121212] border-[#222] text-white hover:bg-black/80"
@@ -476,7 +526,7 @@ export default function App() {
                         <div className="flex flex-col items-center">
                           <button
                             onClick={() => handleShare(item)}
-                            className="p-3 rounded-full bg-[#121212] backdrop-blur-md border border-[#222] text-white hover:bg-black/80 transition-all shadow-lg relative"
+                            className="p-2.5 sm:p-3 rounded-full bg-[#121212] backdrop-blur-md border border-[#222] text-white hover:bg-black/80 transition-all shadow-lg relative"
                           >
                             {copiedItemId === item.id ? (
                               <Check className="w-5 h-5 text-green-400" />
@@ -512,9 +562,9 @@ export default function App() {
                           ) : (
                             <button
                               onClick={() => addToCart(item)}
-                              className="p-4 rounded-full bg-[#EE2737] text-white hover:scale-110 active:scale-95 transition-all shadow-xl hover:shadow-[#EE2737]/30 border border-white/10 animate-pulse"
+                              className="p-3.5 sm:p-4 rounded-full bg-[#EE2737] text-white hover:scale-110 active:scale-95 transition-all shadow-xl hover:shadow-[#EE2737]/30 border border-white/10 animate-pulse"
                             >
-                              <ShoppingBag className="w-6 h-6" />
+                              <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
                             </button>
                           )}
                           <span className="text-[10px] text-[#EE2737] font-display font-bold uppercase tracking-wider mt-1 bg-black/60 px-2 py-0.5 rounded border border-white/5">
@@ -525,12 +575,12 @@ export default function App() {
                       </div>
 
                       {/* Bottom Info Details Area */}
-                      <div className="relative z-10 p-5 pb-8 bg-gradient-to-t from-black via-black/95 to-transparent pt-20">
-                        <div className="max-w-md pr-16">
+                      <div className="relative z-10 p-4 pb-6 sm:p-5 sm:pb-8 bg-gradient-to-t from-black via-black/95 to-transparent pt-16 sm:pt-20">
+                        <div className="max-w-md pr-14 sm:pr-16">
                           
                           {/* Dish Name & Price */}
                           <div className="flex items-baseline gap-3 flex-wrap">
-                            <h2 className="font-display text-2xl font-bold tracking-wide uppercase text-white drop-shadow">
+                            <h2 className="font-display text-xl sm:text-2xl font-bold tracking-wide uppercase text-white drop-shadow">
                               {item.name}
                             </h2>
                             <span className="price-tag-elegant font-display tracking-tight drop-shadow">
@@ -540,7 +590,7 @@ export default function App() {
 
                           {/* Description */}
                           {item.description && (
-                            <p className="text-neutral-300 text-xs mt-2.5 leading-relaxed font-sans font-light line-clamp-3">
+                            <p className="text-neutral-300 text-[11px] sm:text-xs mt-2.5 leading-relaxed font-sans font-light line-clamp-3">
                               {item.description}
                             </p>
                           )}
@@ -598,10 +648,10 @@ export default function App() {
 
         {/* 2. VIEW MODE: TRADITIONAL GRID CARTA */}
         {viewMode === "carta" && (
-          <div className="max-w-6xl w-full mx-auto p-4 flex-grow flex flex-col md:flex-row gap-6">
+          <div className="max-w-6xl w-full mx-auto p-3 sm:p-4 flex-grow flex flex-col md:flex-row gap-4 sm:gap-6">
             
             {/* Sidebar / Left Column: Controls and Info */}
-            <div className="w-full md:w-80 shrink-0 flex flex-col gap-5">
+            <div className="w-full md:w-80 shrink-0 flex flex-col gap-4 sm:gap-5">
               
               {/* Search Box */}
               <div className="bg-[#121212] border border-[#222] p-4 rounded-xl shadow-md">
@@ -666,7 +716,7 @@ export default function App() {
               </div>
 
               {/* Information Bento Widget */}
-              <div className="bg-[#121212] border border-[#222] p-4 rounded-xl shadow-md flex flex-col gap-4">
+              <div className="bg-[#121212] border border-[#222] p-3 sm:p-4 rounded-xl shadow-md flex flex-col gap-4">
                 <h3 className="font-display text-sm font-bold tracking-wider uppercase text-[#EE2737] flex items-center gap-2 border-b border-[#222] pb-2">
                   📍 Sobre Nosotros
                 </h3>
@@ -749,7 +799,7 @@ export default function App() {
                         }`}
                       >
                         {/* Top Cover / Media Block */}
-                        <div className="relative h-44 w-full bg-[#111] overflow-hidden flex items-center justify-center shrink-0">
+                        <div className="relative h-40 sm:h-44 w-full bg-[#111] overflow-hidden flex items-center justify-center shrink-0">
                           {item.image ? (
                             <>
                               <img 
@@ -797,7 +847,7 @@ export default function App() {
                         </div>
 
                         {/* Content Body */}
-                        <div className="p-4 flex-grow flex flex-col justify-between">
+                        <div className="p-3 sm:p-4 flex-grow flex flex-col justify-between">
                           <div>
                             {/* Title & Price */}
                             <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -1212,31 +1262,13 @@ export default function App() {
                 />
               </div>
 
-              {/* Submit Checkout via WhatsApp */}
               <button
-                onClick={() => {
-                  const ta = document.getElementById("cart-general-notes") as HTMLTextAreaElement;
-                  const notesVal = ta ? ta.value : "";
-                  // Add individual item notes to general if they exist
-                  let fullNotes = notesVal;
-                  const itemSpecificNotes = cart
-                    .filter((c) => c.notes && c.notes.trim())
-                    .map((c) => `${c.item.name}: ${c.notes}`)
-                    .join(" | ");
-                  
-                  if (itemSpecificNotes) {
-                    fullNotes = fullNotes 
-                      ? `${fullNotes} [Detalle platos: ${itemSpecificNotes}]` 
-                      : `Detalle platos: ${itemSpecificNotes}`;
-                  }
-                  
-                  handleSendOrder(fullNotes);
-                }}
-                className="w-full bg-[#EE2737] hover:bg-[#d61b2a] text-white font-display text-xs font-bold tracking-widest uppercase py-3.5 px-6 rounded transition-all shadow-lg flex items-center justify-center gap-2"
+                onClick={clearCart}
+                className="w-full bg-[#121212] hover:bg-[#222] text-white font-display text-xs font-bold tracking-widest uppercase py-3.5 px-6 rounded transition-all shadow-lg flex items-center justify-center gap-2 border border-[#222]"
                 id="btn-cart-checkout"
               >
-                <MessageCircle className="w-4 h-4 fill-current animate-pulse" />
-                Enviar Pedido vía WhatsApp
+                <Trash2 className="w-4 h-4" />
+                Vaciar carrito
               </button>
 
             </div>

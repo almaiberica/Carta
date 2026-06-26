@@ -19,6 +19,22 @@
 body, html {
   background-color: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@media (max-width: 640px) {
+  .scroll-snap-container {
+    height: calc(100dvh - 140px);
+  }
 }
 
 /* Custom scroll snap utility classes */
