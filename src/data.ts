@@ -21,7 +21,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 21.90,
     description: "Un recorrido gourmet por nuestros mejores embutidos selectos: jamón, lomo, salchichón y chorizo ibérico cortados al momento. Acompañada de crujiente pan de cristal con tomate y aceite de oliva virgen extra, junto a una selección de frutos secos.",
     allergens: ["Frutos de cáscara"],
-    image: "images/tabla_seleccion_ibericos.",
+    image: "images/tabla_seleccion_ibericos.webp",
     featured: false
   },
   {
@@ -31,7 +31,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 21.90,
     description: "Una esmerada variedad de quesos seleccionados de gran sabor y carácter, perfectos para degustar.",
     allergens: ["Lácteos"],
-    image: "images/tabla_seleccion_quesos.jpg",
+    image: "images/tabla_seleccion_quesos.webp",
     featured: false
   },
   {
@@ -233,7 +233,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 10.50,
     description: "Un trío ideal que combina patatas premium, aceitunas rellenas y deliciosos mejillones.",
     allergens: ["Pescado", "Sulfitos"],
-    image: "images/trio_de_picoteo.jpg",
+    image: "images/trio_de_picoteo.webp",
     featured: false
   },
   {
@@ -243,7 +243,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 19.90,
     description: "Una selección marina premium que incluye latas de berberechos, mejillones y aceitunas seleccionadas.",
     allergens: ["Pescado", "Moluscos"],
-    image: "images/trio_de_latas.jpg",
+    image: "images/trio_de_latas.webp",
     featured: false
   },
   {
@@ -253,7 +253,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 3.50,
     description: "El snack perfecto: mezcla de patatas crujientes, maíz gigante picante y sabrosas cortezas de cerdo.",
     allergens: ["Frutos de cáscara", "Cacahuetes"],
-    image: "images/trio_crunchy_mix.jpg",
+    image: "images/trio_crunchy_mix.webp",
     featured: false
   },
   {
@@ -263,7 +263,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 12.90,
     description: "Una ración generosa de patatas fritas crujientes coronadas con carne desmechada, queso fundido y salsas que convierten este plato en el picoteo perfecto.",
     allergens: ["Lácteos", "Huevos"],
-    image: "images/porky_fries.jpg",
+    image: "images/porky_fries.webp",
     featured: true
   },
   {
@@ -273,7 +273,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 12.90,
     description: "Patatas fritas caseras, cortadas a mano, con huevos fritos y finas lonchas de nuestro selecto jamón ibérico de bellota.",
     allergens: ["Huevos"],
-    image: "images/huevos_rotos_con_jamon_iberico.jpg",
+    image: "images/huevos_rotos_con_jamon_iberico.webp",
     featured: false
   },
   {
@@ -283,7 +283,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 14.90,
     description: "Patatas fritas caseras, cortadas a mano, coronadas con huevos fritos y jugosas tiras de secreto ibérico a la plancha.",
     allergens: ["Huevos"],
-    image: "images/huevos_rotos_con_secreto_iberico.jpg",
+    image: "images/huevos_rotos_con_secreto_iberico.webp",
     featured: false
   },
   {
@@ -445,7 +445,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 10.90,
     description: "Clásica ensalada con base de lechuga fresca, pollo crujiente bien dorado, picatostes artesanales y lascas de queso, todo aderezado con nuestra cremosa salsa César casera.",
     allergens: ["Gluten", "Lácteos", "Huevos", "Pescado"],
-    image: "images/cesar_crujiente.jpg",
+    image: "images/cesar_crujiente.webp",
     featured: false
   },
   {
@@ -455,7 +455,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 12.50,
     description: "Deliciosa y cremosa burrata fresca servida sobre una cama de brotes verdes, coronada con finas lonchas de nuestro mejor jamón ibérico y un toque de aceite de oliva virgen extra.",
     allergens: ["Lácteos", "Frutos de cáscara"],
-    image: "images/burrata_iberica.jpg",
+    image: "images/burrata_iberica.webp",
     featured: false
   },
   {
@@ -465,7 +465,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 9.90,
     description: "Una opción fresca y ligera con una cuidada selección de hortalizas de la huerta, atún de calidad, aceitunas y un aliño tradicional que realza todo su sabor.",
     allergens: ["Pescado"],
-    image: "images/mediterranea.jpg",
+    image: "images/mediterranea.webp",
     featured: false
   },
   {
@@ -515,7 +515,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 11.90,
     description: "Tres molletes asiáticos al vapor, súper esponjosos, rellenos de carrillera ibérica melosa cocinada a fuego lento. Acompañados de bastones crujientes de boniato frito.",
     allergens: ["Gluten", "Soja"],
-    image: "images/baos_carrilleras_ibericas_3_uds_boniato.jpg",
+    image: "images/baos_carrilleras_ibericas_3_uds_boniato.webp",
     featured: false
   },
   {
@@ -525,7 +525,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 11.90,
     description: "Panecillos al vapor rellenos de panceta ibérica confitada y glaseada en una adictiva salsa agridulce casera. Con guarnición de boniato.",
     allergens: ["Gluten", "Soja"],
-    image: "images/baos_panceta_agridulce_3_uds_boniato.jpg",
+    image: "images/baos_panceta_agridulce_3_uds_boniato.webp",
     featured: true
   },
   {
@@ -555,7 +555,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 13.90,
     description: "Masa artesanal crujiente con base de tomate y mozzarella, cubierta con finas lonchas de jamón ibérico de bellota y un huevo campero en el centro que se funde en cada bocado.",
     allergens: ["Gluten", "Lácteos", "Huevos"],
-    image: "images/iberica_con_huevo.jpg",
+    image: "images/iberica_con_huevo.webp",
     featured: false
   },
   {
@@ -565,7 +565,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 13.50,
     description: "Una combinación espectacular que funde la cremosidad de la burrata fresca con el contraste salado de las virutas de jamón ibérico sobre una base crujiente horneada al punto.",
     allergens: ["Gluten", "Lácteos"],
-    image: "images/burrata_iberica_pizza.jpg",
+    image: "images/burrata_iberica_pizza.webp",
     featured: false
   },
   {
@@ -575,7 +575,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 11.90,
     description: "Nuestra pizza más casera y reconfortante, elaborada con ingredientes seleccionados de la casa sobre una base crujiente y fundente de queso.",
     allergens: ["Gluten", "Lácteos"],
-    image: "images/la_clasica.jpg",
+    image: "images/la_clasica.webp",
     featured: false
   },
   {
