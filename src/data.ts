@@ -21,7 +21,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 21.90,
     description: "Un recorrido gourmet por nuestros mejores embutidos selectos: jamón, lomo, salchichón y chorizo ibérico cortados al momento. Acompañada de crujiente pan de cristal con tomate y aceite de oliva virgen extra, junto a una selección de frutos secos.",
     allergens: ["Frutos de cáscara"],
-    image: "images/tabla_seleccion_ibericos.jpg",
+    image: "images/tabla_seleccion_ibericos.",
     featured: false
   },
   {
