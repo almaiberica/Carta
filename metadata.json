@@ -1,0 +1,6 @@
+{
+  "name": "Alma Ibérica - Carta",
+  "description": "Carta digital interactiva con estilo Reels de Alma Ibérica en Sant Boi de Llobregat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
