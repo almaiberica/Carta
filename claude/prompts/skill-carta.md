@@ -1,0 +1,1 @@
+Claude, usando la nueva skill-carta, modifica el archivo web/index.html para que el contenido no esté "esfoscado" (hardcoded) en el HTML. Haz que la página use JavaScript para leer directamente el archivo contenido/carta.csv y generar los platos, precios y secciones de forma automática al cargar la web en el móvil.

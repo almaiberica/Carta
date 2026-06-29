@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Oswald:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+}
+
+:root {
+  --bg: #000000;
+  --red: #5E1914;
+  --nav-bg: rgba(8, 8, 8, 0.95);
+  --white: #FFFFFF;
+  --gray: rgba(255, 255, 255, 0.6);
+  --card-bg: rgba(255, 255, 255, 0.04);
+}
+
+/* Base resets and forced mobile app behavior */
+html, body {
+  height: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+  font-family: var(--font-sans);
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+/* Hide scrollbars for slick mobile interfaces */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom classes for reels scroll snapping */
+.reels-container {
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+}
+
+.reel-item {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: 100dvh;
+  width: 100%;
+  position: relative;
+}
+
+/* Particles styling */
+.ash-particle {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(circle, #5E1914 0%, rgba(94, 25, 20, 0) 70%);
+  border-radius: 50%;
+  z-index: 50;
+}
+
+/* App container */
+.app-viewport {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  height: 100dvh;
+  background-color: #000000;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Custom safe areas for bottom navigation */
+.safe-bottom {
+  padding-bottom: max(14px, env(safe-area-inset-bottom));
+}
+
+/* Double-tap heart animation */
+@keyframes heartPop {
+  0% { transform: scale(0.5); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+.animate-heartPop {
+  animation: heartPop 0.8s ease-out forwards;
+}
+
+/* Fade-in for menu items */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.35s ease-out forwards;
+}
+
+/* Scale bounce for cart badge */
+@keyframes scalePop {
+  0% { transform: scale(0.5); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.animate-scale {
+  animation: scalePop 0.3s ease-out forwards;
+}
