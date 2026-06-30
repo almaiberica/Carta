@@ -576,7 +576,7 @@ export const MENU_DATA: Record<string, Dish[]> = {
       desc: "Cerveza tostada Turia de origen valenciano con notas a pan tostado.",
       price: 2.50,
       alerg: "Gluten",
-      img: ""
+      img: "/images/mediana_turia.webp"
     },
     {
       key: "vermut",
