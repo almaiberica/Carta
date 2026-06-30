@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { X, Calendar, Heart, Instagram, MapPin, Phone, Clock, ArrowUpRight } from "lucide-react";
+import { X, Calendar, Heart, Instagram, MapPin, Phone, Clock, ArrowUpRight, MessageCircle } from "lucide-react";
 
 interface MenuOverlayProps {
   isOpen: boolean;
@@ -148,7 +148,23 @@ export default function MenuOverlay({
             <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#5E1914] transition-colors" />
           </button>
 
-          {/* 4. LLAMAR */}
+          {/* 4. WHATSAPP */}
+          <button
+            onClick={() => window.open("https://wa.me/message/5TQ4BFYFEDTGD1", "_blank")}
+            className="w-full py-4 px-4 text-left border-b border-white/5 flex items-center justify-between group cursor-pointer"
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="p-2 bg-white/5 text-white/70 rounded-lg">
+                <MessageCircle className="w-5 h-5" />
+              </div>
+              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+                WhatsApp
+              </span>
+            </div>
+            <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#5E1914] transition-colors" />
+          </button>
+
+          {/* 5. LLAMAR */}
           <button
             onClick={() => (window.location.href = "tel:+34625617176")}
             className="w-full py-4 px-4 text-left border-b border-white/5 flex items-center justify-between group cursor-pointer"
