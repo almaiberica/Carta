@@ -28,7 +28,7 @@ export default function TopBar({
               : "text-white/40 hover:text-white"
           }`}
         >
-          REAL
+          REELS
         </button>
         <button
           id="toggle-mode-carta"

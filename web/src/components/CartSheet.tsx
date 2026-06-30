@@ -159,25 +159,12 @@ export default function CartSheet({
           )}
         </div>
 
-        {/* Footer Sum & Clean triggers (only if cart not empty) */}
+        {/* Footer (only if cart not empty) */}
         {cartArray.length > 0 && (
           <div className="p-6 bg-neutral-950 border-t border-white/10">
-            {/* Summary */}
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-sans text-xs text-white/50 uppercase tracking-widest font-semibold">
-                Estimación de comanda
-              </span>
-              <span className="font-display font-extrabold text-2xl text-white">
-                {totalPrice.toFixed(2)}€
-              </span>
-            </div>
-
-            {/* Explanatory text */}
             <p className="text-[10px] text-white/40 font-sans text-center mb-5 leading-normal italic">
               *Enseña esta pantalla a tu camarero para agilizar tu comanda en mesa.
             </p>
-
-            {/* Clear Button */}
             <button
               onClick={() => {
                 if (confirm("¿Quieres vaciar toda la comanda actual?")) {

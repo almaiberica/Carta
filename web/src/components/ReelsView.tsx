@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState, MouseEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { Heart, Share2, ShoppingBag, ChevronDown, Check } from "lucide-react";
+import { Share2, ShoppingBag, ChevronDown, Check } from "lucide-react";
 import { Dish } from "../data";
 import { shareDish } from "../lib/shareImage";
 
 interface ReelsViewProps {
   dishes: Dish[];
   cart: Record<string, any>;
-  antojosKeys: string[];
-  onToggleAntojo: (key: string) => void;
   onAddToCart: (dish: Dish) => void;
   onRemoveFromCart: (key: string) => void;
   onActiveCategoryChange: (categoryKey: string) => void;
@@ -19,8 +17,6 @@ interface ReelsViewProps {
 export default function ReelsView({
   dishes,
   cart,
-  antojosKeys,
-  onToggleAntojo,
   onAddToCart,
   onRemoveFromCart,
   onActiveCategoryChange,
@@ -143,103 +139,15 @@ export default function ReelsView({
     }
   }, [activeCategoryKey]);
 
-  // Spawns sparking embers on heart toggle using GSAP
-  const triggerSparks = (e: MouseEvent<HTMLButtonElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const numSparks = 16;
-    for (let i = 0; i < numSparks; i++) {
-      const spark = document.createElement("div");
-      spark.className = "ash-particle";
-      document.body.appendChild(spark);
-
-      const size = gsap.utils.random(4, 9);
-      const angle = (i / numSparks) * Math.PI * 2 + gsap.utils.random(-0.2, 0.2);
-      const distance = gsap.utils.random(40, 100);
-      const destX = centerX + Math.cos(angle) * distance;
-      const destY = centerY + Math.sin(angle) * distance - gsap.utils.random(10, 40); // fly up slightly
-
-      gsap.set(spark, {
-        x: centerX,
-        y: centerY,
-        width: size,
-        height: size,
-        opacity: 1,
-        backgroundColor: gsap.utils.random(["#5E1914", "#8B0000", "#D4AF37"]),
-      });
-
-      gsap.to(spark, {
-        x: destX,
-        y: destY,
-        opacity: 0,
-        scale: 0.2,
-        duration: gsap.utils.random(0.6, 1.2),
-        ease: "power2.out",
-        onComplete: () => {
-          spark.remove();
-        },
-      });
-    }
-
-    // Button pop animation
-    gsap.fromTo(
-      e.currentTarget,
-      { scale: 0.8 },
-      { scale: 1, duration: 0.4, ease: "back.out(2)" }
-    );
-  };
-
   // Double tap handler on image
   const handleDoubleTap = (e: MouseEvent<HTMLDivElement>, dish: Dish) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const touchX = e.clientX - rect.left;
     const touchY = e.clientY - rect.top;
 
-    // Show heart pop-up on screen
+    // Show heart pop-up on screen (solo visual)
     const newId = nextHeartId.current++;
     setDoubleTapHearts((prev) => [...prev, { id: newId, x: touchX, y: touchY }]);
-
-    // Trigger like if not already liked
-    if (!antojosKeys.includes(dish.key)) {
-      onToggleAntojo(dish.key);
-
-      // Programmatically launch spark effect on screen
-      const numSparks = 18;
-      for (let i = 0; i < numSparks; i++) {
-        const spark = document.createElement("div");
-        spark.className = "ash-particle";
-        document.body.appendChild(spark);
-
-        const size = gsap.utils.random(6, 12);
-        const angle = (i / numSparks) * Math.PI * 2 + gsap.utils.random(-0.3, 0.3);
-        const distance = gsap.utils.random(60, 140);
-        const destX = e.clientX + Math.cos(angle) * distance;
-        const destY = e.clientY + Math.sin(angle) * distance - gsap.utils.random(20, 60);
-
-        gsap.set(spark, {
-          x: e.clientX,
-          y: e.clientY,
-          width: size,
-          height: size,
-          opacity: 1,
-          backgroundColor: gsap.utils.random(["#5E1914", "#8B0000", "#D4AF37"]),
-        });
-
-        gsap.to(spark, {
-          x: destX,
-          y: destY,
-          opacity: 0,
-          scale: 0.1,
-          duration: gsap.utils.random(0.8, 1.4),
-          ease: "power3.out",
-          onComplete: () => {
-            spark.remove();
-          },
-        });
-      }
-    }
 
     // Clean up heart after animation ends
     setTimeout(() => {
@@ -275,7 +183,6 @@ export default function ReelsView({
         className="reels-container no-scrollbar"
       >
         {triplicatedDishes.map((dish, idx) => {
-          const isLiked = antojosKeys.includes(dish.key);
           const cartItem = cart[dish.key];
           const qty = cartItem ? cartItem.qty : 0;
 
@@ -405,31 +312,6 @@ export default function ReelsView({
                     </span>
                   </div>
 
-                  {/* Action 2: Antojo (Heart) */}
-                  <div className="flex flex-col items-center">
-                    <button
-                      id={`like-reels-${dish.key}`}
-                      onClick={(e) => {
-                        onToggleAntojo(dish.key);
-                        triggerSparks(e);
-                      }}
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 shadow-xl active:scale-90 cursor-pointer ${
-                        isLiked
-                          ? "bg-[#5E1914] border-[#5E1914] text-white"
-                          : "bg-black/60 border-white/10 text-white hover:border-[#5E1914]/60"
-                      }`}
-                      aria-label="Dar antojo"
-                    >
-                      <Heart
-                        className={`w-5 h-5 transition-transform ${
-                          isLiked ? "fill-white scale-110 text-white" : "text-white"
-                        }`}
-                      />
-                    </button>
-                    <span className="text-[9px] font-sans font-bold uppercase text-white/50 tracking-wider mt-1.5">
-                      Antojo
-                    </span>
-                  </div>
 
                   {/* Action 3: Compartir */}
                   <div className="flex flex-col items-center">

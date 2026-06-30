@@ -136,9 +136,16 @@ Actualmente: `alert('Reservas próximamente')`
 
 **Negocio:**
 - Instagram: `https://www.instagram.com/almaibericaa/`
-- WhatsApp: `https://wa.me/34635343819`
-- Horarios: Lun–Jue 08:00–20:00 · Vie–Dom 08:00–00:00
-
+- WhatsApp: `https://wa.me/34625617176`
+- Horarios: martes	8:00–20:00
+miércoles	8:00–20:00
+jueves	8:00–23:30
+viernes	8:00–23:30
+sábado	9:00–23:30
+domingo	9:00–16:00
+lunes	8:00–20:00
+- Web de reservas : https://calendly.com/almaibericastb/30
+- Enlace de google : https://share.google/nwD6QzDf4QYuVVWLo
 ---
 
 ## Reglas de código

@@ -3,7 +3,7 @@ import { Dish } from "../data";
 /**
  * Generates a high-quality 1080x1920 (9:16) image of a dish and triggers sharing or download.
  */
-export async function shareDish(dish: Dish): Promise<{ success: boolean; method: "share" | "download" }> {
+export async function shareDish(dish: Dish): Promise<{ success: boolean; method: "share" }> {
   const canvas = document.createElement("canvas");
   canvas.width = 1080;
   canvas.height = 1920;
@@ -206,24 +206,12 @@ export async function shareDish(dish: Dish): Promise<{ success: boolean; method:
           resolve({ success: true, method: "share" });
           return;
         } catch (e) {
-          console.warn("Share API failed or was dismissed, falling back to download", e);
+          // User dismissed the share sheet or share failed — do nothing
+          console.warn("Share dismissed or failed", e);
         }
       }
 
-      // Fallback: download file
-      const link = document.createElement("a");
-      link.download = `alma-iberica-${dish.key}.png`;
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-
-      // Copy text to clipboard to give an awesome user experience
-      try {
-        await navigator.clipboard.writeText(`¡Prueba el plato "${dish.name}" en Alma Ibérica! Dirección: Carrer Lluís Pascual Roca, 38, Sant Boi de Llobregat.`);
-      } catch {
-        // Ignore clipboard failures gracefully
-      }
-
-      resolve({ success: true, method: "download" });
+      resolve({ success: false, method: "share" });
     }, "image/png");
   });
 }

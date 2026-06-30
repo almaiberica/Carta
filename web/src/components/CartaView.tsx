@@ -1,14 +1,12 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Heart, Plus, Share2, ShoppingBag, Check } from "lucide-react";
+import { Plus, Share2, ShoppingBag, Check } from "lucide-react";
 import { Dish, CAT_ORDER, CAT_LABELS } from "../data";
 import { shareDish } from "../lib/shareImage";
 
 interface CartaViewProps {
   dishes: Dish[];
   cart: Record<string, any>;
-  antojosKeys: string[];
-  onToggleAntojo: (key: string) => void;
   onAddToCart: (dish: Dish) => void;
   onActiveCategoryChange: (categoryKey: string) => void;
   activeCategoryKey: string;
@@ -17,8 +15,6 @@ interface CartaViewProps {
 export default function CartaView({
   dishes,
   cart,
-  antojosKeys,
-  onToggleAntojo,
   onAddToCart,
   onActiveCategoryChange,
   activeCategoryKey,
@@ -122,7 +118,6 @@ export default function CartaView({
             {/* Dishes List */}
             <div className="flex flex-col gap-3">
               {catDishes.map((dish) => {
-                const isLiked = antojosKeys.includes(dish.key);
                 const cartItem = cart[dish.key];
                 const qty = cartItem ? cartItem.qty : 0;
 
@@ -187,18 +182,6 @@ export default function CartaView({
                           <Share2 className="w-3.5 h-3.5" />
                         </button>
 
-                        {/* 2. Like Button */}
-                        <button
-                          onClick={() => onToggleAntojo(dish.key)}
-                          className={`w-8 h-8 rounded-lg border flex items-center justify-center transition-all cursor-pointer active:scale-90 ${
-                            isLiked
-                              ? "bg-[#5E1914]/20 border-[#5E1914]/40 text-[#5E1914]"
-                              : "bg-white/5 border-white/5 text-white/50"
-                          }`}
-                          aria-label="Antojo"
-                        >
-                          <Heart className={`w-3.5 h-3.5 ${isLiked ? "fill-[#5E1914]" : ""}`} />
-                        </button>
 
                         {/* 3. Add to Cart Button */}
                         <button

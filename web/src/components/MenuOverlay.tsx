@@ -8,10 +8,9 @@ interface MenuOverlayProps {
   onOpenAntojos: () => void;
 }
 
-// RESERVAS configuration constant — simple to modify for Alma in the future
 const RESERVAS_ACTION = {
-  type: "whatsapp", // "tel" | "whatsapp" | "link"
-  value: "https://wa.me/34635343819", // Direct WhatsApp contact
+  type: "link",
+  value: "https://calendly.com/almaibericastb/30",
 };
 
 export default function MenuOverlay({
@@ -151,7 +150,7 @@ export default function MenuOverlay({
 
           {/* 4. LLAMAR */}
           <button
-            onClick={() => (window.location.href = "tel:+34635343819")}
+            onClick={() => (window.location.href = "tel:+34625617176")}
             className="w-full py-4 px-4 text-left border-b border-white/5 flex items-center justify-between group cursor-pointer"
           >
             <div className="flex items-center gap-3.5">
@@ -163,7 +162,7 @@ export default function MenuOverlay({
               </span>
             </div>
             <span className="text-xs font-sans font-semibold text-white/30">
-              635 343 819
+              625 617 176
             </span>
           </button>
 
@@ -200,17 +199,16 @@ export default function MenuOverlay({
                 <Clock className="w-4 h-4 text-[#5E1914] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-white">Horarios:</p>
-                  <p>• Lunes a Jueves: 08:00 – 20:00</p>
-                  <p>• Viernes, Sábado y Domingo: 08:00 – 00:00</p>
+                  <p>• Lun – Mié: 08:00 – 20:00</p>
+                  <p>• Jue – Vie: 08:00 – 23:30</p>
+                  <p>• Sáb: 09:00 – 23:30</p>
+                  <p>• Dom: 09:00 – 16:00</p>
                 </div>
               </div>
 
               <button
                 onClick={() =>
-                  window.open(
-                    "https://www.google.com/maps/search/?api=1&query=Carrer+Lluis+Pascual+Roca+38+08830+Sant+Boi+de+Llobregat+Barcelona",
-                    "_blank"
-                  )
+                  window.open("https://share.google/nwD6QzDf4QYuVVWLo", "_blank")
                 }
                 className="w-full py-2.5 rounded-lg bg-white/10 text-white hover:bg-[#5E1914] hover:text-white transition-all text-center font-sans font-bold uppercase tracking-wider block cursor-pointer"
               >
