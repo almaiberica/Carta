@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { X, Calendar, Heart, Instagram, MapPin, Phone, Clock, ArrowUpRight, MessageCircle } from "lucide-react";
+import { X, Calendar, Heart, Instagram, MapPin, Clock, ArrowUpRight, MessageCircle } from "lucide-react";
 
 interface MenuOverlayProps {
   isOpen: boolean;
@@ -91,7 +91,7 @@ export default function MenuOverlay({
             Alma <span className="text-[#5E1914] font-serif not-italic font-bold tracking-widest">Ibérica</span>
           </h2>
           <p className="text-[10px] font-sans font-semibold uppercase tracking-[0.22em] text-[#5E1914] mt-2">
-            TAPEO SELECTO DESDE 2026
+            TAPEO SELECTO
           </p>
         </div>
 
@@ -132,21 +132,39 @@ export default function MenuOverlay({
             <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#5E1914] transition-colors" />
           </button>
 
-          {/* 3. INSTAGRAM */}
-          <button
-            onClick={() => window.open("https://www.instagram.com/almaibericaa/", "_blank")}
-            className="w-full py-4 px-4 text-left border-b border-white/5 flex items-center justify-between group cursor-pointer"
-          >
-            <div className="flex items-center gap-3.5">
-              <div className="p-2 bg-white/5 text-white/70 rounded-lg">
-                <Instagram className="w-5 h-5" />
+          {/* 3. REDES SOCIALES */}
+          <div className="border-b border-white/5">
+            <button
+              onClick={() => window.open("https://www.instagram.com/almaibericaa/", "_blank")}
+              className="w-full py-3.5 px-4 text-left flex items-center justify-between group cursor-pointer"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="p-2 bg-white/5 text-white/70 rounded-lg">
+                  <Instagram className="w-5 h-5" />
+                </div>
+                <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+                  Instagram
+                </span>
               </div>
-              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
-                Instagram Oficial
-              </span>
-            </div>
-            <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#5E1914] transition-colors" />
-          </button>
+              <span className="text-xs font-sans font-semibold text-white/30">@almaibericaa</span>
+            </button>
+            <button
+              onClick={() => window.open("https://www.tiktok.com/@alma.iberica7", "_blank")}
+              className="w-full py-3.5 px-4 text-left flex items-center justify-between group cursor-pointer"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="p-2 bg-white/5 text-white/70 rounded-lg">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/>
+                  </svg>
+                </div>
+                <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+                  TikTok
+                </span>
+              </div>
+              <span className="text-xs font-sans font-semibold text-white/30">@alma.iberica7</span>
+            </button>
+          </div>
 
           {/* 4. WHATSAPP */}
           <button
@@ -162,24 +180,6 @@ export default function MenuOverlay({
               </span>
             </div>
             <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#5E1914] transition-colors" />
-          </button>
-
-          {/* 5. LLAMAR */}
-          <button
-            onClick={() => (window.location.href = "tel:+34625617176")}
-            className="w-full py-4 px-4 text-left border-b border-white/5 flex items-center justify-between group cursor-pointer"
-          >
-            <div className="flex items-center gap-3.5">
-              <div className="p-2 bg-white/5 text-white/70 rounded-lg">
-                <Phone className="w-5 h-5" />
-              </div>
-              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
-                Llamar al Local
-              </span>
-            </div>
-            <span className="text-xs font-sans font-semibold text-white/30">
-              625 617 176
-            </span>
           </button>
 
           {/* 5. UBICACIÓN Y HORARIOS (Collapsible toggle) */}
