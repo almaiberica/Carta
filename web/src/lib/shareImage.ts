@@ -3,7 +3,7 @@ import { Dish } from "../data";
 /**
  * Generates a high-quality 1080x1920 (9:16) image of a dish and triggers sharing or download.
  */
-export async function shareDish(dish: Dish): Promise<{ success: boolean; method: "share" }> {
+export async function shareDish(dish: Dish): Promise<{ success: boolean; method: "share" | "download" }> {
   const canvas = document.createElement("canvas");
   canvas.width = 1080;
   canvas.height = 1920;
@@ -19,7 +19,7 @@ export async function shareDish(dish: Dish): Promise<{ success: boolean; method:
 
   // Draw subtle textured/amber gradients
   const bgGrad = ctx.createRadialGradient(540, 960, 100, 540, 960, 1000);
-  bgGrad.addColorStop(0, "rgba(94, 25, 20, 0.12)");
+  bgGrad.addColorStop(0, "rgba(238, 39, 55, 0.12)");
   bgGrad.addColorStop(1, "#000000");
   ctx.fillStyle = bgGrad;
   ctx.fillRect(0, 0, 1080, 1920);
@@ -75,7 +75,7 @@ export async function shareDish(dish: Dish): Promise<{ success: boolean; method:
 
   // If no photo was drawn, render a luxury decorative gold/red border
   if (!imageLoaded) {
-    ctx.strokeStyle = "#5E1914";
+    ctx.strokeStyle = "#EE2737";
     ctx.lineWidth = 12;
     ctx.strokeRect(40, 40, 1000, 1840);
 
@@ -90,7 +90,7 @@ export async function shareDish(dish: Dish): Promise<{ success: boolean; method:
   ctx.font = "italic 56px 'Playfair Display', Georgia, serif";
   ctx.fillText("Alma Ibérica", 540, 160);
 
-  ctx.fillStyle = "#5E1914";
+  ctx.fillStyle = "#EE2737";
   ctx.font = "700 24px 'Inter', sans-serif";
   ctx.fillText("TAPEO SELECTO • SANT BOI", 540, 210);
 
@@ -99,11 +99,11 @@ export async function shareDish(dish: Dish): Promise<{ success: boolean; method:
     // Elegant Bulls-eye or Iberian silhouette symbol
     ctx.beginPath();
     ctx.arc(540, 750, 120, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(94, 25, 20, 0.3)";
+    ctx.strokeStyle = "rgba(238, 39, 55, 0.3)";
     ctx.lineWidth = 4;
     ctx.stroke();
 
-    ctx.fillStyle = "#5E1914";
+    ctx.fillStyle = "#EE2737";
     ctx.font = "italic 120px 'Playfair Display', Georgia, serif";
     ctx.fillText("AI", 540, 790);
   }
@@ -112,7 +112,7 @@ export async function shareDish(dish: Dish): Promise<{ success: boolean; method:
   ctx.textAlign = "left";
   
   // Category Eyebrow
-  ctx.fillStyle = "#5E1914";
+  ctx.fillStyle = "#EE2737";
   ctx.font = "700 32px 'Inter', sans-serif";
   ctx.fillText(dish.cat.toUpperCase(), 100, 1380);
 
@@ -175,7 +175,7 @@ export async function shareDish(dish: Dish): Promise<{ success: boolean; method:
 
   // 7. Draw Price tag
   ctx.textAlign = "right";
-  ctx.fillStyle = "#5E1914";
+  ctx.fillStyle = "#EE2737";
   ctx.font = "700 110px 'Inter', sans-serif";
   ctx.fillText(`${dish.price.toFixed(2)}€`, 980, 1390);
 

@@ -1,12 +1,13 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Plus, Share2, ShoppingBag, Check } from "lucide-react";
+import { Plus, Share2, Check } from "lucide-react";
 import { Dish, CAT_ORDER, CAT_LABELS } from "../data";
+import { Cart } from "../hooks/useCart";
 import { shareDish } from "../lib/shareImage";
 
 interface CartaViewProps {
   dishes: Dish[];
-  cart: Record<string, any>;
+  cart: Cart;
   onAddToCart: (dish: Dish) => void;
   onActiveCategoryChange: (categoryKey: string) => void;
   activeCategoryKey: string;
@@ -100,14 +101,14 @@ export default function CartaView({
         return (
           <div
             key={catKey}
-            ref={(el) => (sectionRefs.current[catKey] = el)}
+            ref={(el) => { sectionRefs.current[catKey] = el; }}
             id={`section-${catKey}`}
             className="mb-8 scroll-mt-20"
           >
             {/* Category Header */}
             <div className="flex items-center gap-3 mb-4 sticky top-0 bg-black/95 py-2.5 z-20 backdrop-blur-sm border-b border-white/5">
-              <span className="w-2 h-2 rounded-full bg-[#5E1914] shadow-sm shadow-[#5E1914]/60 shrink-0" />
-              <h3 className="font-serif italic text-lg tracking-widest text-[#5E1914]">
+              <span className="w-2 h-2 rounded-full bg-[#EE2737] shadow-sm shadow-[#EE2737]/60 shrink-0" />
+              <h3 className="font-serif italic text-lg tracking-widest text-[#EE2737]">
                 {CAT_LABELS[catKey]}
               </h3>
               <span className="font-sans font-bold text-[10px] uppercase tracking-wider text-white/30 ml-auto">
@@ -147,7 +148,7 @@ export default function CartaView({
 
                       {/* Details */}
                       <div className="overflow-hidden">
-                        <h4 className="font-serif italic text-[16px] text-white tracking-wide truncate group-hover:text-[#5E1914] transition-colors">
+                        <h4 className="font-serif italic text-[16px] text-white tracking-wide truncate group-hover:text-[#EE2737] transition-colors">
                           {dish.name}
                         </h4>
                         
@@ -157,7 +158,7 @@ export default function CartaView({
 
                         {/* Allergens label */}
                         {dish.alerg && (
-                          <span className="text-[9px] text-[#5E1914]/80 font-sans italic block truncate mt-1.5">
+                          <span className="text-[9px] text-[#EE2737]/80 font-sans italic block truncate mt-1.5">
                             Alergenos: {dish.alerg}
                           </span>
                         )}
@@ -176,7 +177,7 @@ export default function CartaView({
                         {/* 1. Share Button */}
                         <button
                           onClick={() => shareDish(dish)}
-                          className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 hover:border-[#5E1914]/30 text-white/50 hover:text-white flex items-center justify-center transition-all cursor-pointer active:scale-90"
+                          className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 hover:border-[#EE2737]/30 text-white/50 hover:text-white flex items-center justify-center transition-all cursor-pointer active:scale-90"
                           aria-label="Compartir"
                         >
                           <Share2 className="w-3.5 h-3.5" />
@@ -188,8 +189,8 @@ export default function CartaView({
                           onClick={() => onAddToCart(dish)}
                           className={`relative w-8 h-8 rounded-lg flex items-center justify-center border transition-all cursor-pointer active:scale-90 ${
                             qty > 0
-                              ? "bg-[#5E1914] border-[#5E1914] text-white"
-                              : "bg-white/5 border-white/5 text-white hover:border-[#5E1914]"
+                              ? "bg-[#EE2737] border-[#EE2737] text-white"
+                              : "bg-white/5 border-white/5 text-white hover:border-[#EE2737]"
                           }`}
                           aria-label="Añadir a comanda"
                         >

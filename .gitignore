@@ -2,5 +2,8 @@
 Thumbs.db
 *.log
 node_modules/
+dist/
 .env
 .claude/settings.local.json
+.env
+.ig_session.json

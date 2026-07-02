@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Oswald:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -9,7 +8,7 @@
 
 :root {
   --bg: #000000;
-  --red: #5E1914;
+  --red: #EE2737;
   --nav-bg: rgba(8, 8, 8, 0.95);
   --white: #FFFFFF;
   --gray: rgba(255, 255, 255, 0.6);
@@ -64,7 +63,7 @@ html, body {
 .ash-particle {
   position: absolute;
   pointer-events: none;
-  background: radial-gradient(circle, #5E1914 0%, rgba(94, 25, 20, 0) 70%);
+  background: radial-gradient(circle, #EE2737 0%, rgba(238, 39, 55, 0) 70%);
   border-radius: 50%;
   z-index: 50;
 }

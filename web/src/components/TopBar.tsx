@@ -22,9 +22,9 @@ export default function TopBar({
         <button
           id="toggle-mode-real"
           onClick={() => onChangeMode("real")}
-          className={`px-3 py-1 text-[11px] font-display font-bold tracking-wider rounded-full transition-all duration-300 ${
+          className={`px-3.5 py-2 text-[11px] font-display font-bold tracking-wider rounded-full transition-all duration-300 ${
             currentMode === "real"
-              ? "bg-[#5E1914] text-white shadow-sm shadow-[#5E1914]/20"
+              ? "bg-[#EE2737] text-white shadow-sm shadow-[#EE2737]/20"
               : "text-white/40 hover:text-white"
           }`}
         >
@@ -33,7 +33,7 @@ export default function TopBar({
         <button
           id="toggle-mode-carta"
           onClick={() => onChangeMode("carta")}
-          className={`px-3 py-1 text-[11px] font-display font-bold tracking-wider rounded-full transition-all duration-300 ${
+          className={`px-3.5 py-2 text-[11px] font-display font-bold tracking-wider rounded-full transition-all duration-300 ${
             currentMode === "carta"
               ? "bg-white text-black font-extrabold"
               : "text-white/40 hover:text-white"
@@ -45,8 +45,8 @@ export default function TopBar({
 
       {/* 2. Active Category Badge (Center) */}
       <div className="flex items-center max-w-[45%]">
-        <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#5E1914]/40 text-center shadow-lg truncate">
-          <span className="text-[11px] font-sans font-semibold tracking-[0.15em] text-[#5E1914] uppercase leading-none block truncate">
+        <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#EE2737]/40 text-center shadow-lg truncate">
+          <span className="text-[11px] font-sans font-semibold tracking-[0.15em] text-[#EE2737] uppercase leading-none block truncate">
             {activeCategoryLabel}
           </span>
         </div>
@@ -56,12 +56,12 @@ export default function TopBar({
       <button
         id="btn-topbar-cart"
         onClick={onOpenCart}
-        className="relative p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:border-[#5E1914]/40 hover:text-[#5E1914] transition-all duration-300 active:scale-95 shadow-lg cursor-pointer"
+        className="relative p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:border-[#EE2737]/40 hover:text-[#EE2737] transition-all duration-300 active:scale-95 shadow-lg cursor-pointer"
         aria-label="Ver comanda"
       >
         <ShoppingCart className="w-5 h-5" />
         {cartCount > 0 && (
-          <span id="topbar-cart-badge" className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#5E1914] text-[10px] font-display font-extrabold text-white animate-scale">
+          <span id="topbar-cart-badge" className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#EE2737] text-[10px] font-display font-extrabold text-white animate-scale">
             {cartCount}
           </span>
         )}

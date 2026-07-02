@@ -62,7 +62,7 @@ export default function BottomNav({
               
               {/* Active Indicator Red Dot */}
               {isActive && (
-                <span className="absolute bottom-1 w-1.5 h-1.5 bg-[#5E1914] rounded-full shadow-md shadow-[#5E1914]/60" />
+                <span className="absolute bottom-1 w-1.5 h-1.5 bg-[#EE2737] rounded-full shadow-md shadow-[#EE2737]/60" />
               )}
             </button>
           );

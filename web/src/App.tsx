@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { MENU_DATA } from "./data";
 import { useCart } from "./hooks/useCart";
+import { useAntojos } from "./hooks/useAntojos";
 
 // Components
 import TopBar from "./components/TopBar";
@@ -8,34 +9,25 @@ import BottomNav from "./components/BottomNav";
 import ReelsView from "./components/ReelsView";
 import CartaView from "./components/CartaView";
 import CartSheet from "./components/CartSheet";
+import AntojosSheet from "./components/AntojosSheet";
 import MenuOverlay from "./components/MenuOverlay";
 
 export default function App() {
   const [mode, setMode] = useState<"real" | "carta">("real");
-
   const [activeCategoryKey, setActiveCategoryKey] = useState<string>("bocadillos");
-
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isAntojosOpen, setIsAntojosOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const {
-    cart,
-    addToCart,
-    updateQty,
-    removeFromCart,
-    clearCart,
-    totalItems,
-    totalPrice,
-  } = useCart();
+  const { cart, addToCart, updateQty, clearCart, totalItems, totalPrice } = useCart();
+  const { antojos, toggleAntojo } = useAntojos();
 
-  const allActiveDishes = useMemo(() => {
-    return [
-      ...(MENU_DATA.bocadillos || []),
-      ...(MENU_DATA.tapeo || []),
-      ...(MENU_DATA.platos || []),
-      ...(MENU_DATA.bebidas || []),
-    ];
-  }, []);
+  const allActiveDishes = useMemo(() => [
+    ...(MENU_DATA.bocadillos || []),
+    ...(MENU_DATA.tapeo || []),
+    ...(MENU_DATA.platos || []),
+    ...(MENU_DATA.bebidas || []),
+  ], []);
 
   const activeCategoryLabel = useMemo(() => {
     switch (activeCategoryKey) {
@@ -50,6 +42,7 @@ export default function App() {
   return (
     <div className="w-full h-full bg-[#050505] flex items-center justify-center overflow-hidden">
       <div className="app-viewport relative flex flex-col h-full w-full max-w-[430px] bg-black overflow-hidden shadow-black/80 shadow-2xl">
+        <h1 className="sr-only">Alma Ibérica — Tapeo Selecto · Bar Ibérico en Sant Boi de Llobregat</h1>
 
         <TopBar
           currentMode={mode}
@@ -65,10 +58,11 @@ export default function App() {
               dishes={allActiveDishes}
               cart={cart}
               onAddToCart={addToCart}
-              onRemoveFromCart={removeFromCart}
               onActiveCategoryChange={setActiveCategoryKey}
               onOpenCart={() => setIsCartOpen(true)}
               activeCategoryKey={activeCategoryKey}
+              antojosKeys={antojos}
+              onToggleAntojo={toggleAntojo}
             />
           ) : (
             <CartaView
@@ -97,10 +91,20 @@ export default function App() {
           totalItems={totalItems}
         />
 
+        <AntojosSheet
+          isOpen={isAntojosOpen}
+          onClose={() => setIsAntojosOpen(false)}
+          antojosKeys={antojos}
+          allDishes={allActiveDishes}
+          onToggleAntojo={toggleAntojo}
+          onAddToCart={addToCart}
+          cart={cart}
+        />
+
         <MenuOverlay
           isOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
-          onOpenAntojos={() => setIsCartOpen(true)}
+          onOpenAntojos={() => setIsAntojosOpen(true)}
         />
       </div>
     </div>

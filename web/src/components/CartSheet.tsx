@@ -75,7 +75,7 @@ export default function CartSheet({
             <h2 className="font-serif italic text-xl text-white tracking-widest">
               Mi Comanda
             </h2>
-            <span className="px-2 py-0.5 rounded-md bg-[#5E1914] text-[10px] font-sans font-bold text-white uppercase">
+            <span className="px-2 py-0.5 rounded-md bg-[#EE2737] text-[10px] font-sans font-bold text-white uppercase">
               {totalItems} items
             </span>
           </div>
@@ -129,7 +129,7 @@ export default function CartSheet({
                       <h4 className="font-serif italic text-[15px] text-white tracking-wide truncate">
                         {item.dish.name}
                       </h4>
-                      <p className="font-sans text-sm font-bold text-[#5E1914] mt-0.5">
+                      <p className="font-sans text-sm font-bold text-[#EE2737] mt-0.5">
                         {item.dish.price.toFixed(2)}€
                       </p>
                     </div>
@@ -148,7 +148,7 @@ export default function CartSheet({
                     </span>
                     <button
                       onClick={() => onUpdateQty(item.dish.key, item.qty + 1)}
-                      className="p-1.5 rounded-lg bg-[#5E1914] text-white hover:bg-[#5E1914]/80 transition-all cursor-pointer"
+                      className="p-1.5 rounded-lg bg-[#EE2737] text-white hover:bg-[#EE2737]/80 transition-all cursor-pointer"
                     >
                       <Plus className="w-4 h-4" />
                     </button>
@@ -171,7 +171,7 @@ export default function CartSheet({
                   onClearCart();
                 }
               }}
-              className="w-full py-3.5 rounded-xl border border-white/10 hover:border-[#5E1914]/40 text-white/70 hover:text-[#5E1914] bg-white/5 hover:bg-[#5E1914]/5 font-sans font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 transition-all cursor-pointer duration-300"
+              className="w-full py-3.5 rounded-xl border border-white/10 hover:border-[#EE2737]/40 text-white/70 hover:text-[#EE2737] bg-white/5 hover:bg-[#EE2737]/5 font-sans font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 transition-all cursor-pointer duration-300"
             >
               <Trash2 className="w-4 h-4" />
               Limpiar Comanda

@@ -71,7 +71,7 @@ export default function MenuOverlay({
         {/* Top-Left Red Square Close Button */}
         <button
           onClick={handleClose}
-          className="w-12 h-12 bg-[#5E1914] hover:bg-[#5E1914]/80 flex items-center justify-center text-white transition-all duration-300 active:scale-95 cursor-pointer rounded-xl"
+          className="w-12 h-12 bg-[#EE2737] hover:bg-[#EE2737]/80 flex items-center justify-center text-white transition-all duration-300 active:scale-95 cursor-pointer rounded-xl"
           aria-label="Cerrar menú"
         >
           <X className="w-6 h-6 stroke-[3]" />
@@ -88,9 +88,9 @@ export default function MenuOverlay({
         {/* Logo and Tagline */}
         <div className="text-center mb-10">
           <h2 className="font-serif italic text-3xl tracking-wide uppercase leading-none text-white font-normal">
-            Alma <span className="text-[#5E1914] font-serif not-italic font-bold tracking-widest">Ibérica</span>
+            Alma <span className="text-[#EE2737] font-serif not-italic font-bold tracking-widest">Ibérica</span>
           </h2>
-          <p className="text-[10px] font-sans font-semibold uppercase tracking-[0.22em] text-[#5E1914] mt-2">
+          <p className="text-[10px] font-sans font-semibold uppercase tracking-[0.22em] text-[#EE2737] mt-2">
             TAPEO SELECTO
           </p>
         </div>
@@ -103,14 +103,14 @@ export default function MenuOverlay({
             className="w-full py-4 px-4 text-left border-b border-white/5 flex items-center justify-between group cursor-pointer animate-fadeIn"
           >
             <div className="flex items-center gap-3.5">
-              <div className="p-2 bg-[#5E1914]/10 text-[#5E1914] rounded-lg">
+              <div className="p-2 bg-[#EE2737]/10 text-[#EE2737] rounded-lg">
                 <Calendar className="w-5 h-5" />
               </div>
-              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#EE2737] transition-colors">
                 Reservar Mesa
               </span>
             </div>
-            <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#5E1914] transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#EE2737] transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
 
           {/* 2. MIS ANTOJOS */}
@@ -125,11 +125,11 @@ export default function MenuOverlay({
               <div className="p-2 bg-white/5 text-white/70 rounded-lg">
                 <Heart className="w-5 h-5 fill-white/40 text-white/40" />
               </div>
-              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#EE2737] transition-colors">
                 Mis Antojos
               </span>
             </div>
-            <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#5E1914] transition-colors" />
+            <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#EE2737] transition-colors" />
           </button>
 
           {/* 3. REDES SOCIALES */}
@@ -142,7 +142,7 @@ export default function MenuOverlay({
                 <div className="p-2 bg-white/5 text-white/70 rounded-lg">
                   <Instagram className="w-5 h-5" />
                 </div>
-                <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+                <span className="font-serif italic text-lg tracking-wide group-hover:text-[#EE2737] transition-colors">
                   Instagram
                 </span>
               </div>
@@ -158,7 +158,7 @@ export default function MenuOverlay({
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/>
                   </svg>
                 </div>
-                <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+                <span className="font-serif italic text-lg tracking-wide group-hover:text-[#EE2737] transition-colors">
                   TikTok
                 </span>
               </div>
@@ -175,11 +175,11 @@ export default function MenuOverlay({
               <div className="p-2 bg-white/5 text-white/70 rounded-lg">
                 <MessageCircle className="w-5 h-5" />
               </div>
-              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#EE2737] transition-colors">
                 WhatsApp
               </span>
             </div>
-            <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#5E1914] transition-colors" />
+            <ArrowUpRight className="w-5 h-5 text-white/20 group-hover:text-[#EE2737] transition-colors" />
           </button>
 
           {/* 5. UBICACIÓN Y HORARIOS (Collapsible toggle) */}
@@ -191,11 +191,11 @@ export default function MenuOverlay({
               <div className="p-2 bg-white/5 text-white/70 rounded-lg">
                 <MapPin className="w-5 h-5" />
               </div>
-              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#5E1914] transition-colors">
+              <span className="font-serif italic text-lg tracking-wide group-hover:text-[#EE2737] transition-colors">
                 Ubicación y Horario
               </span>
             </div>
-            <span className="text-xs font-sans font-bold text-[#5E1914]">
+            <span className="text-xs font-sans font-bold text-[#EE2737]">
               {showLocation ? "CERRAR" : "VER"}
             </span>
           </button>
@@ -204,7 +204,7 @@ export default function MenuOverlay({
           {showLocation && (
             <div className="p-4 mx-4 mt-2 rounded-xl bg-white/5 border border-white/5 text-xs font-sans text-white/70 animate-fadeIn">
               <div className="flex items-start gap-2 mb-3">
-                <MapPin className="w-4 h-4 text-[#5E1914] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#EE2737] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-white">Dirección:</p>
                   <p>Carrer Lluís Pascual Roca, 38, 08830 Sant Boi de Llobregat, Barcelona</p>
@@ -212,7 +212,7 @@ export default function MenuOverlay({
               </div>
 
               <div className="flex items-start gap-2 mb-4">
-                <Clock className="w-4 h-4 text-[#5E1914] shrink-0 mt-0.5" />
+                <Clock className="w-4 h-4 text-[#EE2737] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-white">Horarios:</p>
                   <p>• Lun – Mié: 08:00 – 20:00</p>
@@ -226,7 +226,7 @@ export default function MenuOverlay({
                 onClick={() =>
                   window.open("https://share.google/nwD6QzDf4QYuVVWLo", "_blank")
                 }
-                className="w-full py-2.5 rounded-lg bg-white/10 text-white hover:bg-[#5E1914] hover:text-white transition-all text-center font-sans font-bold uppercase tracking-wider block cursor-pointer"
+                className="w-full py-2.5 rounded-lg bg-white/10 text-white hover:bg-[#EE2737] hover:text-white transition-all text-center font-sans font-bold uppercase tracking-wider block cursor-pointer"
               >
                 ¿Cómo llegar?
               </button>

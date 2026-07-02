@@ -1,27 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, MouseEvent } from "react";
 import { gsap } from "gsap";
-import { Share2, ShoppingBag, ChevronDown, Check } from "lucide-react";
+import { Share2, ShoppingBag, ChevronDown, Check, Heart } from "lucide-react";
 import { Dish } from "../data";
+import { Cart } from "../hooks/useCart";
 import { shareDish } from "../lib/shareImage";
 
 interface ReelsViewProps {
   dishes: Dish[];
-  cart: Record<string, any>;
+  cart: Cart;
   onAddToCart: (dish: Dish) => void;
-  onRemoveFromCart: (key: string) => void;
   onActiveCategoryChange: (categoryKey: string) => void;
   onOpenCart: () => void;
   activeCategoryKey: string;
+  antojosKeys: string[];
+  onToggleAntojo: (key: string) => void;
 }
 
 export default function ReelsView({
   dishes,
   cart,
   onAddToCart,
-  onRemoveFromCart,
   onActiveCategoryChange,
   onOpenCart,
   activeCategoryKey,
+  antojosKeys,
+  onToggleAntojo,
 }: ReelsViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollTimeoutRef = useRef<number | null>(null);
@@ -139,13 +142,18 @@ export default function ReelsView({
     }
   }, [activeCategoryKey]);
 
-  // Double tap handler on image
+  // Double tap handler on image: adds to Antojos (favoritos) and pops a heart
   const handleDoubleTap = (e: MouseEvent<HTMLDivElement>, dish: Dish) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const touchX = e.clientX - rect.left;
     const touchY = e.clientY - rect.top;
 
-    // Show heart pop-up on screen (solo visual)
+    // Double-tap only adds to favorites, never removes (Instagram-style)
+    if (!antojosKeys.includes(dish.key)) {
+      onToggleAntojo(dish.key);
+    }
+
+    // Show heart pop-up on screen
     const newId = nextHeartId.current++;
     setDoubleTapHearts((prev) => [...prev, { id: newId, x: touchX, y: touchY }]);
 
@@ -201,7 +209,7 @@ export default function ReelsView({
               >
                 {/* Placeholder always visible behind the image */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-neutral-950 via-[#0a0303] to-neutral-950 flex flex-col items-center justify-center p-8 text-center select-none">
-                  <span className="font-serif italic text-2xl text-[#5E1914] tracking-[0.1em] mb-2 uppercase">
+                  <span className="font-serif italic text-2xl text-[#EE2737] tracking-[0.1em] mb-2 uppercase">
                     Alma Ibérica
                   </span>
                   <span className="font-sans text-[10px] text-white/20 uppercase tracking-[0.2em] leading-none">
@@ -232,7 +240,7 @@ export default function ReelsView({
                   className="absolute pointer-events-none text-white flex items-center justify-center animate-heartPop"
                   style={{ left: heart.x - 40, top: heart.y - 40 }}
                 >
-                  <Heart className="w-20 h-20 fill-[#5E1914] text-[#5E1914] filter drop-shadow-lg" />
+                  <Heart className="w-20 h-20 fill-[#EE2737] text-[#EE2737] filter drop-shadow-lg" />
                 </div>
               ))}
 
@@ -246,7 +254,7 @@ export default function ReelsView({
                   }`}
                 >
                   {/* Category Label */}
-                  <span className="font-sans font-bold text-[10px] tracking-[0.22em] text-[#5E1914] uppercase mb-1.5 block">
+                  <span className="font-sans font-bold text-[10px] tracking-[0.22em] text-[#EE2737] uppercase mb-1.5 block">
                     {dish.cat}
                   </span>
 
@@ -290,8 +298,8 @@ export default function ReelsView({
                       onClick={() => onAddToCart(dish)}
                       className={`relative w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 shadow-xl active:scale-90 cursor-pointer ${
                         qty > 0
-                          ? "bg-[#5E1914] border-[#5E1914] text-white"
-                          : "bg-black/60 border-white/10 text-white hover:border-[#5E1914]/60"
+                          ? "bg-[#EE2737] border-[#EE2737] text-white"
+                          : "bg-black/60 border-white/10 text-white hover:border-[#EE2737]/60"
                       }`}
                       aria-label="Añadir a comanda"
                     >
@@ -312,6 +320,26 @@ export default function ReelsView({
                     </span>
                   </div>
 
+                  {/* Action 2: Like / Antojos */}
+                  <div className="flex flex-col items-center">
+                    <button
+                      id={`like-reels-${dish.key}`}
+                      onClick={() => onToggleAntojo(dish.key)}
+                      className={`relative w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 shadow-xl active:scale-90 cursor-pointer ${
+                        antojosKeys.includes(dish.key)
+                          ? "bg-[#EE2737] border-[#EE2737] text-white"
+                          : "bg-black/60 border-white/10 text-white hover:border-[#EE2737]/60"
+                      }`}
+                      aria-label="Añadir a antojos"
+                    >
+                      <Heart
+                        className={`w-5 h-5 ${antojosKeys.includes(dish.key) ? "fill-white" : ""}`}
+                      />
+                    </button>
+                    <span className="text-[9px] font-sans font-bold uppercase text-white/50 tracking-wider mt-1.5">
+                      Antojo
+                    </span>
+                  </div>
 
                   {/* Action 3: Compartir */}
                   <div className="flex flex-col items-center">

@@ -1,6 +1,6 @@
-# CLAUDE.md — Alma Ibérica · Carta Digital
+# CLAUDE.md — Alma Ibérica · Sistema Completo
 
-Este archivo da instrucciones a Claude Code cuando trabaja en este repo.
+Este archivo da instrucciones a Claude Code para todo el proyecto.
 Léelo entero antes de tocar cualquier fichero.
 
 ---
@@ -15,14 +15,129 @@ Léelo entero antes de tocar cualquier fichero.
 
 ---
 
-## Proyecto
+## Identidad de marca
 
-Web app de carta digital para **Alma Ibérica — Tapeo Selecto** (Sant Boi de Llobregat, Barcelona).
-La spec completa está en `Descargas/superprompt_alma_iberica_v4.md`.
+**Nombre:** Alma Ibérica — Tapeo Selecto
+**Concepto:** Bar de tapas españolas y taberna gastronómica tradicional
+**Especialidad:** Cerdo ibérico en todas sus formas
+**Dirección:** Carrer Lluís Pascual Roca 38, Sant Boi de Llobregat, Barcelona
+**Teléfono:** 625617176 · WhatsApp: https://wa.me/34625617176
+**Email:** almaibericastb@gmail.com
+**Instagram:** https://www.instagram.com/almaibericaa/ · TikTok: @alma.iberica7
+**Google Maps:** https://share.google/nwD6QzDf4QYuVVWLo
+**Reservas:** https://calendly.com/almaibericastb/30
+
+**Horarios:**
+- Lunes, martes, miércoles: 08:00–20:00
+- Jueves, viernes: 08:00–23:30
+- Sábado: 09:00–23:30
+- Domingo: 09:00–16:00
+
+**Voz de marca:** "tradicional y canalla" — directo, con orgullo de producto, sin poses gourmet
 
 ---
 
-## Stack
+## Identidad visual
+
+| Variable | Valor | Uso |
+|---|---|---|
+| `--bg` | `#000000` | Fondo de toda la app |
+| `--red` | `#EE2737` | Nombres de plato, acentos, CTA |
+| `--white` | `#FFFFFF` | Texto general, precios |
+| `--gray` | `rgba(255,255,255,0.6)` | Texto secundario, alérgenos |
+
+- **Tipografía:** Oswald (títulos, precios, nav) + Nunito Sans (descripciones)
+- **Estilo visual:** Taberna española con carácter. Rústico pero con criterio.
+- **Fotografía:** fondo oscuro/pizarra, iluminación dramática cálida, vertical 9:16
+
+---
+
+## Productos estrella
+
+| Producto | Precio |
+|---|---|
+| Secreto Ibérico | 19,90€ |
+| Lagarto Ibérico | 15,90€ |
+| Carrilleras al Pedro Ximénez | 10,90€ |
+| Croquetas de Jamón (x8) | 12,00€ |
+| Bocadillo Especial de la Casa | 8,90€ |
+| Serranito | 6,90€ |
+| Bravas de la Casa | 5,90€ |
+| Pincho Tortilla + Caña | 4,90€ |
+
+**Promo fija:** Caña + tapa 3€ — sábados y domingos al mediodía
+
+---
+
+## Estructura del proyecto
+
+```
+alma iberica/
+├── CLAUDE.md                          ← este archivo
+│
+├── web/                               ← Carta Digital (React app)
+│   ├── src/
+│   │   ├── data.ts                    ← ÚNICO archivo de datos del menú
+│   │   ├── App.tsx
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   └── lib/shareImage.ts
+│   └── public/images/                 ← fotos en .webp
+│
+├── brand-kit-almaiberica/             ← Identidad de marca
+│   ├── logotipos/
+│   ├── colores/
+│   ├── tipografia/
+│   ├── imagenes_inspiracionales/
+│   ├── textos_marca/
+│   ├── assets_graficos/
+│   └── skills/
+│       └── brandkit/SKILL.md
+│
+├── investigador-competencia/          ← Análisis de competencia
+│   ├── perfiles_competidores/
+│   ├── precios/
+│   │   └── carta_alma_iberica_2026.csv
+│   ├── redes_sociales/
+│   ├── promociones/
+│   ├── criticas_y_valoraciones/
+│   ├── informes/
+│   └── skills/
+│       └── marketing-psychology/SKILL.md
+│
+├── guiones-reels/                     ← Guiones de vídeo
+│   └── skills/
+│       ├── viral-short-form/SKILL.md
+│       └── viral-hooks/SKILL.md
+│
+├── copywriter-almaiberica/            ← Redacción y captions
+│   └── skills/
+│       ├── copywriting/SKILL.md
+│       └── viral-captions-and-ctas/SKILL.md
+│
+├── calendario-contenido/              ← Estrategia de contenido
+│   └── skills/
+│       └── content-strategy/SKILL.md
+│
+└── disenadora-web/                    ← Diseño web
+    └── skills/
+        ├── frontend-design/SKILL.md
+        ├── high-end-visual-design/SKILL.md
+        ├── web-design-guidelines/SKILL.md
+        └── seo-audit/SKILL.md
+```
+
+---
+
+## Carta Digital — Stack técnico
+
+```bash
+cd "alma iberica/web"
+npm install
+npm run dev
+npm run build
+npm run preview
+```
 
 - React 19 + Vite 6 + TypeScript
 - Tailwind CSS v4 (`@tailwindcss/vite`)
@@ -31,36 +146,8 @@ La spec completa está en `Descargas/superprompt_alma_iberica_v4.md`.
 - Deploy: Vercel ← GitHub (`github.com/almaiberica/Carta`)
 - Sin backend: estado en `localStorage`, sin API, sin base de datos
 
-> **Nota Linux:** si `npm run build` falla con "Cannot find native binding", ejecutar:
+> **Nota Linux:** si `npm run build` falla con "Cannot find native binding":
 > `npm install @tailwindcss/oxide-linux-x64-gnu`
-
----
-
-## Estructura del repositorio
-
-```
-alma iberica /
-├── web/
-│   ├── src/
-│   │   ├── data.ts             ← ÚNICO archivo de datos del menú
-│   │   ├── App.tsx
-│   │   ├── components/
-│   │   ├── hooks/
-│   │   └── lib/shareImage.ts
-│   └── public/images/          ← fotos en .webp (subidas manualmente)
-├── Contenido/
-├── guiones/
-├── marketing/
-└── claude/prompts/
-```
-
-```bash
-cd "alma iberica /web"
-npm install
-npm run dev
-npm run build
-npm run preview
-```
 
 ---
 
@@ -69,7 +156,7 @@ npm run preview
 **El Excel `AlmaIberica_Carta_Completa_2026.xlsx` es la única fuente de verdad.**
 
 - Solo mostrar platos con `Mostrar en carta = Sí` (~57 de 139)
-- Los datos van **únicamente** en `src/data.ts`, dentro del bloque delimitado:
+- Los datos van **únicamente** en `src/data.ts`, dentro del bloque:
 
 ```ts
 /* INICIO DATOS */
@@ -77,42 +164,24 @@ export const MENU_DATA: Record<string, Dish[]> = { ... };
 /* FIN DATOS */
 ```
 
-- Al actualizar el menú, regenerar **solo** ese bloque. No tocar el resto del código.
 - Columna `Bloque menu` define la categoría:
   - `Bocadillos` → `bocadillos`
   - `Tapeo y Vermut` → `tapeo`
   - `Platos Principales` → `platos`
   - `Bodega y Bebidas` → `bebidas`
-- `img` = `/images/` + valor columna `Archivo imagen` + `.webp`. Si vacío → `img: ""` (usa `foto_proximamente.webp`)
+- `img` = `/images/` + valor columna `Archivo imagen` + `.webp`. Si vacío → `img: ""`
 
 ---
 
-## Identidad visual
-
-| Variable CSS | Valor | Uso |
-|---|---|---|
-| `--bg` | `#000000` | Fondo de toda la app |
-| `--red` | `#EE2737` | Nombres de plato, acentos, CTA, like activo |
-| `--white` | `#FFFFFF` | Texto general, precios |
-| `--gray` | `rgba(255,255,255,0.6)` | Alérgenos, texto secundario |
-
-- **Fuentes:** Oswald (títulos, precios, nav) + Nunito Sans (descripciones, alérgenos) — solo Google Fonts
-- `max-width: 430px` centrado, mobile-first, iOS Safari + Android Chrome
-- GSAP solo para animaciones premium (transiciones, likes, stagger). Nunca para layout.
-
----
-
-## Arquitectura
+## Arquitectura de la app
 
 **Modo Real (Reels):**
 - `scroll-snap-type: y mandatory`, cada plato ocupa `100dvh`
 - Bucle infinito: array triplicado + salto silencioso
-- Acciones por reel en columna derecha: carrito, like, compartir
 
 **Modo Carta:**
 - Lista vertical agrupada por categoría
-- Thumbnail 72×72px
-- Stagger GSAP al hacer scroll
+- Thumbnail 72×72px + stagger GSAP al hacer scroll
 
 **localStorage:**
 - `alma_comanda` → carrito (visual, no envía pedido)
@@ -125,43 +194,44 @@ export const MENU_DATA: Record<string, Dish[]> = { ... };
 - Todas en `public/images/*.webp`, máx 800×1200px, ~75% calidad, <150KB
 - Sin tildes ni espacios en nombres de archivo
 - `foto_proximamente.webp` = placeholder para platos sin foto
-- Las sube la dueña manualmente desde VS Code
 
----
-
-## Constantes a recordar
-
-**`MenuOverlay.tsx`** — `RESERVAS`: cambiar cuando haya enlace real (TheFork, WhatsApp...)
-Actualmente: `alert('Reservas próximamente')`
-
-**Negocio:**
-- Instagram: `https://www.instagram.com/almaibericaa/`
-- WhatsApp: `https://wa.me/34625617176`
-- Horarios: martes	8:00–20:00
-miércoles	8:00–20:00
-jueves	8:00–23:30
-viernes	8:00–23:30
-sábado	9:00–23:30
-domingo	9:00–16:00
-lunes	8:00–20:00
-- Web de reservas : https://calendly.com/almaibericastb/30
-- Enlace de google : https://share.google/nwD6QzDf4QYuVVWLo
 ---
 
 ## Reglas de código
 
-- Tipar siempre los props de componentes nuevos. No usar `any` salvo que sea inevitable (y documentarlo).
-- No añadir dependencias nuevas sin mencionarlo.
+- Tipar siempre los props. No usar `any` salvo inevitable (documentarlo).
+- No añadir dependencias sin mencionarlo.
 - No tocar el Excel desde código.
 - No añadir backend ni llamadas a API externas.
 - Nombres de imagen: sin tildes, sin espacios, siempre `.webp`.
 
 ---
 
-## Estado actual
+## Skills del sistema de marketing
 
-- App React 19 + Vite en `web/` — **build limpio** (`npm run build` OK)
-- 10 imágenes en `web/public/images/` (sin tildes ni espacios)
-- `foto_proximamente.webp` pendiente de crear/añadir en `public/images/`
-- Repositorio GitHub aún no creado — pendiente `gh auth login` + `gh repo create`
-- Constante `RESERVAS` en `MenuOverlay.tsx`: cambiar cuando haya enlace real
+Todas las skills tienen el contexto de Alma Ibérica incorporado. No hace falta repetirlo en cada petición.
+
+| Skill | Carpeta | Para qué |
+|---|---|---|
+| `viral-short-form` | guiones-reels/ | Guiones completos Reels/TikTok |
+| `viral-hooks` | guiones-reels/ | Hooks primeros 2-3 segundos |
+| `copywriting` | copywriter-almaiberica/ | Copy web y marketing |
+| `viral-captions-and-ctas` | copywriter-almaiberica/ | Captions + hashtags + CTAs |
+| `marketing-psychology` | investigador-competencia/ | Psicología del cliente |
+| `content-strategy` | calendario-contenido/ | Planificación de contenido |
+| `brandkit` | brand-kit-almaiberica/ | Identidad visual |
+| `frontend-design` | disenadora-web/ | Diseño web |
+| `high-end-visual-design` | disenadora-web/ | UI premium |
+| `web-design-guidelines` | disenadora-web/ | Auditoría de código |
+| `seo-audit` | disenadora-web/ | SEO local Barcelona |
+
+---
+
+## Competidores de referencia
+
+@barbocata_ · @varromad · @tasquetablaibcn · @b.de.bocata
+
+## Pendiente
+
+- 30 de los 57 platos activos en `data.ts` aún no tienen foto (`img: ""` o archivo no subido todavía). Mientras tanto se muestra automáticamente el placeholder "Foto próximamente" (ya no requiere ningún fichero `foto_proximamente.webp`: está implementado como marcador visual en el propio componente). La dueña puede ir subiendo `.webp` a `disenadora-web/public/images/` y rellenando el campo `img` en `data.ts` según se vayan teniendo las fotos.
+- Constante `RESERVAS` en `MenuOverlay.tsx`: resuelta, ya usa `https://calendly.com/almaibericastb/30`.

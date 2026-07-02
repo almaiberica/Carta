@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { X, Heart, Plus, ShoppingCart } from "lucide-react";
 import { Dish } from "../data";
+import { Cart } from "../hooks/useCart";
 
 interface AntojosSheetProps {
   isOpen: boolean;
@@ -10,7 +11,7 @@ interface AntojosSheetProps {
   allDishes: Dish[];
   onToggleAntojo: (key: string) => void;
   onAddToCart: (dish: Dish) => void;
-  cart: Record<string, any>;
+  cart: Cart;
 }
 
 export default function AntojosSheet({
@@ -71,11 +72,11 @@ export default function AntojosSheet({
         {/* Header */}
         <div className="flex items-center justify-between px-6 pb-4 border-b border-white/5">
           <div className="flex items-center gap-2.5">
-            <Heart className="w-5 h-5 fill-[#5E1914] text-[#5E1914]" />
+            <Heart className="w-5 h-5 fill-[#EE2737] text-[#EE2737]" />
             <h2 className="font-serif italic text-xl text-white tracking-widest">
               Mis Antojos
             </h2>
-            <span className="px-2 py-0.5 rounded-md bg-[#5E1914]/20 border border-[#5E1914]/40 text-[10px] font-sans font-bold text-[#5E1914] uppercase">
+            <span className="px-2 py-0.5 rounded-md bg-[#EE2737]/20 border border-[#EE2737]/40 text-[10px] font-sans font-bold text-[#EE2737] uppercase">
               {likedDishes.length} items
             </span>
           </div>
@@ -92,7 +93,7 @@ export default function AntojosSheet({
         <div className="flex-1 overflow-y-auto px-6 py-4 no-scrollbar">
           {likedDishes.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center text-white/40">
-              <div className="p-4 rounded-full bg-white/5 text-[#5E1914]/30 mb-4 animate-pulse">
+              <div className="p-4 rounded-full bg-white/5 text-[#EE2737]/30 mb-4 animate-pulse">
                 <Heart className="w-12 h-12" />
               </div>
               <p className="font-serif italic text-lg text-white/80">
@@ -131,7 +132,7 @@ export default function AntojosSheet({
                         <h4 className="font-serif italic text-[15px] text-white tracking-wide truncate">
                           {dish.name}
                         </h4>
-                        <p className="font-sans text-sm font-bold text-[#5E1914] mt-0.5">
+                        <p className="font-sans text-sm font-bold text-[#EE2737] mt-0.5">
                           {dish.price.toFixed(2)}€
                         </p>
                       </div>
@@ -142,10 +143,10 @@ export default function AntojosSheet({
                       {/* Delete from antojos */}
                       <button
                         onClick={() => onToggleAntojo(dish.key)}
-                        className="p-2.5 rounded-lg text-white/50 hover:text-[#5E1914] hover:bg-white/5 transition-all cursor-pointer"
+                        className="p-2.5 rounded-lg text-white/50 hover:text-[#EE2737] hover:bg-white/5 transition-all cursor-pointer"
                         title="Quitar de favoritos"
                       >
-                        <Heart className="w-4 h-4 fill-[#5E1914] text-[#5E1914] hover:fill-none hover:text-white/40 transition-all duration-300" />
+                        <Heart className="w-4 h-4 fill-[#EE2737] text-[#EE2737] hover:fill-none hover:text-white/40 transition-all duration-300" />
                       </button>
 
                       {/* Add to cart */}
@@ -154,11 +155,11 @@ export default function AntojosSheet({
                         className={`p-2.5 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                           isInCart
                             ? "bg-white/10 text-white"
-                            : "bg-[#5E1914] text-white hover:bg-[#5E1914]/80"
+                            : "bg-[#EE2737] text-white hover:bg-[#EE2737]/80"
                         }`}
                       >
                         {isInCart ? (
-                          <ShoppingCart className="w-4 h-4 text-[#5E1914]" />
+                          <ShoppingCart className="w-4 h-4 text-[#EE2737]" />
                         ) : (
                           <Plus className="w-4 h-4" />
                         )}
